@@ -13,7 +13,7 @@
 
   @font-face {
     font-family: 'YourCustomFont';
-    src: url('./src/assets/Pokemon\ GB.ttf') format('truetype');
+    src: url('./assets/Pokemon\ GB.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }

@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
      backgroundImage: {
-      "poke": "url(./src/assets/pokemon-bg.png)"
+      "poke": "url(./assets/pokemon-bg.png)"
      },
      colors: {
       'modal-background': '#f8f3f8',
