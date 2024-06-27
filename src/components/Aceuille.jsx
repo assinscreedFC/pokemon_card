@@ -2,9 +2,20 @@
 function Aceuille(){
     return(
         <>
-            <div className=" bg-poke w-full min-h-svh bg-cover bg-fixed bg-center flex justify-center items-center">
+            <div className="h-svh fixed  flex justify-center items-center bg-black/40 ">
             
-            <div className="w-20 h-20  modal-content p-4 flex justify-center items-center">anis</div>
+            <div className=" w-full mx-20  modal-content p-8 flex flex-col  justify-center items-start gap-3 ">
+                <h1 className=" cursor-pointer">Select a difficulty level</h1>
+                <div className=" font-custom mx-4 text-lg flex flex-col gap-1">
+                    <p className=" cursor-pointer">esay</p>
+                    <p className=" cursor-pointer">medieum</p>
+                    <p className=" cursor-pointer">hard</p>
+                </div>
+                
+
+                <h3 className=" font-custom mx-4 text-lg cursor-pointer">GITHUB REPO</h3>
+
+            </div>
             
             </div>
         

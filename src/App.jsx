@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <div className="w-full cursor-custom min-h-svh">
+    <div className="bg-poke w-full min-h-svh bg-cover bg-fixed bg-center cursor-custom flex justify-center items-center">
       
       <Aceuille/>
     </div>
