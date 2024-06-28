@@ -9,9 +9,9 @@ export default {
       translate: {
         '1/2': '50%',
       },
-     backgroundImage: {
-      "poke": "url(\"./assets/pokemon-bg.png\")"
-     },
+      backgroundImage: {
+        "poke": "url('./assets/pokemon-bg.png')",
+      },
      colors: {
       'modal-background': '#f8f3f8',
       'modal-text': '#181010',

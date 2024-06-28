@@ -13,15 +13,22 @@ function Aceuille(){
       const { isPlaying, currentIndex, play, pause, stop, playNext, playPrevious, playByIndex, setNextTrack } = useAudioPlayer(audioSources);
     const [val,setval]=useState(0);
     const [etat,setetat]=useState(true);
-
+const [sound,setSound]=useState(true)
 const handeldata=()=>{
     setetat(true);
 }
 const handlegame=(valeur)=>{
     setval(valeur);
-    setetat(false);
+    setetat(false); 
+
     playByIndex(1);
-    setNextTrack(0);
+    if(!sound){
+        setNextTrack(0);
+    }
+    
+   
+    
+   
     
 }
   
@@ -29,7 +36,7 @@ const handlegame=(valeur)=>{
     
   
   
-  const [sound,setSound]=useState(true)
+  
   const handlechange=()=>{
     setSound(!sound);
     playByIndex(0);
