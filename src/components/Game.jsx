@@ -9,7 +9,7 @@ function Game({onDataSend ,nombre}) {
    const { getStoredValue, setStoredValue, removeStoredValue } =useLocalStorage();
 
     const [cards, setCards] = useState([])
-    // const [info,setinfo]=useState(); 
+    const [info,setinfo]=useState(true); 
     const [poke,setpoke]=useState([]);
     const [click,setclick]=useState([]);
     const [etat,setetat]=useState(true);
@@ -22,17 +22,25 @@ function Game({onDataSend ,nombre}) {
 
         if(copy.includes(dta)){
            setetat(false);
+           setinfo(true);
+           
            const val =getStoredValue("max");
         if(val<click.length){
              setStoredValue("max",click.length);
         }
-        }else{
-            
+       
+     
+        }else{   
            copy.push(dta);
+           
            setclick( copy);
         }
-            
+            if(copy.length === nombre ){
+            setetat(false);
+           setinfo(false);
+           }
     }
+    
     useEffect(()=>{
         let tabou=[];
         let tabb=[];
@@ -109,22 +117,65 @@ function Game({onDataSend ,nombre}) {
     <div className="flex flex-col  content-start">  <NavBar score={click.length} nbr={nombre}/></div>
     <div className="  w-full flex flex-wrap justify-center items-center gap-10 p-7">
     
-    {etat ? cards : <div className=" w-full min-h-svh inset-0 absolute  bg-black/40 flex justify-center items-center">
-             <div className="min-h-full  flex justify-center items-center  ">
-            
-            <div className=" w-full mx-20  modal-content p-8 flex flex-col  justify-center items-start gap-3 ">
-                <h1 className=" ">Game Overr !!!</h1>
-                <div className=" font-custom mx-4 text-lg flex flex-col gap-1">
-                    <p className=" cursor-pointer"></p>
-                    <p className=" cursor-pointer" onClick={aceuille}>Acueille</p>
-                    <p className=" cursor-pointer" onClick={retry}>Retry</p>
-                </div>
-                <h3 className=" font-custom mx-4 text-lg cursor-pointer"><a href="https://github.com/assinscreedFC" target="_blank" className="cursor-pointer">GITHUB REPO</a></h3>
+    {!etat ? (
+  (info) ? (
+    
+    <div className="w-full min-h-svh inset-0 absolute bg-black/40 flex justify-center items-center">
+      <div className="min-h-full flex justify-center items-center">
+        <div className="w-full mx-20 modal-content p-8 flex flex-col justify-center items-start gap-3">
+          <h1>Game Over !!!</h1>
+          <div className="font-custom mx-4 text-lg flex flex-col gap-1">
+            <p className="cursor-pointer"></p>
+            <p className="cursor-pointer" onClick={aceuille}>
+              Acceuil
+            </p>
+            <p className="cursor-pointer" onClick={retry}>
+              Retry
+            </p>
+          </div>
+          <h3 className="font-custom mx-4 text-lg cursor-pointer">
+            <a
+              href="https://github.com/assinscreedFC"
+              target="_blank"
+              className="cursor-pointer"
+            >
+              GITHUB REPO
+            </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="w-full min-h-svh inset-0 absolute bg-black/40 flex justify-center items-center">
+      <div className="min-h-full flex justify-center items-center">
+        <div className="w-full mx-20 modal-content p-8 flex flex-col justify-center items-start gap-3">
+          <h1>WINNER !!!</h1>
+          <div className="font-custom mx-4 text-lg flex flex-col gap-1">
+            <p className="cursor-pointer"></p>
+            <p className="cursor-pointer" onClick={aceuille}>
+              Acceuil
+            </p>
+            <p className="cursor-pointer" onClick={retry}>
+              Retry
+            </p>
+          </div>
+          <h3 className="font-custom mx-4 text-lg cursor-pointer">
+            <a
+              href="https://github.com/assinscreedFC"
+              target="_blank"
+              className="cursor-pointer"
+            >
+              GITHUB REPO
+            </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  )
+) : (
+  cards
+)}
 
-            </div>
-            
-            </div>
-        </div>}
     </div>
         </>
     )
