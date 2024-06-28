@@ -37,7 +37,7 @@ function Game({onDataSend ,nombre}) {
         }
             if(copy.length === nombre ){
             setetat(false);
-           setinfo(false);
+            setinfo(false);
            }
     }
     
