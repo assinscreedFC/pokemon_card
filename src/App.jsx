@@ -7,9 +7,9 @@ function App() {
 
   return (
     <>
-    <div className=' w-9 float-start m-4 bg-white rounded-[50%] flex justify-center items-center '> <img src="./music-on.png" className='w-5' alt="" /></div>
+   
     <div className="bg-poke max-w-svh min-h-svh bg-cover bg-fixed bg-center cursor-custom ">
-      
+       <div className=' w-12  h-12 absolute z-50 m-4 bg-white rounded-[50%] flex justify-center items-center cursor-pointer '> <img src="./music-on.png" className='w-5 bg-white cursor-pointer' alt="" /></div>
      <Aceuille/>
     </div>
     </>
