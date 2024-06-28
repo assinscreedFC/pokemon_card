@@ -114,9 +114,7 @@ function Game({onDataSend ,nombre}) {
        
     } 
 
-    useEffect(()=>{
-      play();
-    },info)
+   
 
     return(
         <>
@@ -130,7 +128,7 @@ function Game({onDataSend ,nombre}) {
       <div className="min-h-full flex justify-center items-center">
         <div className="w-full mx-20 modal-content p-8 flex flex-col justify-center items-start gap-3">
           <h1>Game Over !!!</h1>
-          <div className="font-custom mx-4 text-lg flex flex-col gap-1">
+          <div className="izan mx-4 text-lg flex flex-col gap-1">
             <p className="cursor-pointer"></p>
             <p className="cursor-pointer" onClick={aceuille}>
               Acceuil
@@ -139,7 +137,7 @@ function Game({onDataSend ,nombre}) {
               Retry
             </p>
           </div>
-          <h3 className="font-custom mx-4 text-lg cursor-pointer">
+          <h3 className="izan mx-4 text-lg cursor-pointer">
             <a
               href="https://github.com/assinscreedFC"
               target="_blank"
@@ -156,7 +154,7 @@ function Game({onDataSend ,nombre}) {
       <div className="min-h-full flex justify-center items-center">
         <div className="w-full mx-20 modal-content p-8 flex flex-col justify-center items-start gap-3">
           <h1>WINNER !!!</h1>
-          <div className="font-custom mx-4 text-lg flex flex-col gap-1">
+          <div className="izan mx-4 text-lg flex flex-col gap-1">
             <p className="cursor-pointer"></p>
             <p className="cursor-pointer" onClick={aceuille}>
               Acceuil
@@ -165,7 +163,7 @@ function Game({onDataSend ,nombre}) {
               Retry
             </p>
           </div>
-          <h3 className="font-custom mx-4 text-lg cursor-pointer">
+          <h3 className="izan mx-4 text-lg cursor-pointer">
             <a
               href="https://github.com/assinscreedFC"
               target="_blank"

@@ -22,14 +22,14 @@ const handlegame=(valeur)=>{
             
             <div className=" w-full mx-20  modal-content p-8 flex flex-col  justify-center items-start gap-3 ">
                 <h1 className=" cursor-pointer">Select a difficulty level</h1>
-                <div className=" font-custom mx-4 text-lg flex flex-col gap-1">
+                <div className=" izan mx-4 text-lg flex flex-col gap-1">
                     <p className=" cursor-pointer" onClick={()=> handlegame(5)}>esay</p>
                     <p className=" cursor-pointer" onClick={()=> handlegame(7)}>medieum</p>
                     <p className=" cursor-pointer" onClick={()=> handlegame(10)}>hard</p>
                 </div>
                 
 
-                <h3 className=" font-custom mx-4 text-lg cursor-pointer">GITHUB REPO</h3>
+                <h3 className=" izan mx-4 text-lg cursor-pointer">GITHUB REPO</h3>
 
             </div>
             

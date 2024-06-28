@@ -20,3 +20,9 @@
   body {
     @apply font-custom_p;
   }
+.izan{
+  @apply font-custom;
+}
+.zdefir{
+  @apply bg-poke;
+}
