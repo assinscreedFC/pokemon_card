@@ -1,4 +1,4 @@
-function NavBar() {
+function NavBar({score ,nbr}) {
     return(
         <>
             <nav className="w-full flex flex-col justify-center items-center p-4 gap-4">
@@ -12,7 +12,7 @@ function NavBar() {
               <div>
                     <h2>SCORE: 0 HIGH SCORE: 7</h2>
                 </div>
-                <div className=" mt-4"><h2>0/5</h2></div>
+                <div className=" mt-4"><h2>{score}/{nbr}</h2></div>
             </nav>
         </>
     )
