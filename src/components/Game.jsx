@@ -3,10 +3,10 @@ import useLocalStorage from "./hook/LocalStorageHook.js";
 import { useEffect, useState } from "react";
 import getRandomNumberInRange from "./hook/getRRandomNumbeInRange.js";
 import Card from "./Card.jsx";
-import useAudioPlayer from "./hook/useAudioPlayer.js";
+
 
 function Game({onDataSend ,nombre, onPlay, onPause, onStop, onNext, onPrevious, onPlayByIndex, onSetNextTrack, isPlaying, currentTrack }) {
-   const {play}=useAudioPlayer("./assets/victory.mp3")
+   
    const { getStoredValue, setStoredValue, removeStoredValue } =useLocalStorage();
 
     const [cards, setCards] = useState([])
