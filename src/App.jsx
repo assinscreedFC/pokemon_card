@@ -1,7 +1,6 @@
 
 import Aceuille from './components/Aceuille.jsx'
-import "./index.css"
-import './App.css'
+
 // flex justify-center items-center
 function App() {
   
