@@ -56,15 +56,15 @@ const handlegame=(valeur)=>{
              <div className="h-svh  flex justify-center items-center  ">
             
             <div className=" w-full mx-20  modal-content p-8 flex flex-col  justify-center items-start gap-3 ">
-                <h1 className=" cursor-pointer">Select a difficulty level</h1>
+                <h1 className=" cursor-pointer font-custom_p">Select a difficulty level</h1>
                 <div className=" izan mx-4 text-lg flex flex-col gap-1">
-                    <p className=" cursor-pointer" onClick={()=> handlegame(5)} >esay</p>
-                    <p className=" cursor-pointer" onClick={()=> handlegame(7)} >medieum</p>
-                    <p className=" cursor-pointer" onClick={()=> handlegame(10)} >hard</p>
+                    <p className=" cursor-pointer font-custom" onClick={()=> handlegame(5)} >esay</p>
+                    <p className=" cursor-pointer font-custom" onClick={()=> handlegame(7)} >medieum</p>
+                    <p className=" cursor-pointe font-customr" onClick={()=> handlegame(10)} >hard</p>
                 </div>
                 
 
-                <h3 className="izan mx-4 text-lg cursor-pointer">
+                <h3 className="izan mx-4 text-lg cursor-pointer font-custom">
             <a
               href="https://github.com/assinscreedFC"
               target="_blank"
