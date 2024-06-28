@@ -23,6 +23,9 @@
 .izan{
   @apply font-custom;
 }
+.font-custom{
+  font-family: 'YourCustomFont';
+}
 .zdefir{
-  @apply bg-poke;
+  background-image: url("https://assinscreedfc.github.io/pokemon_card/pokemonbg.png");
 }
