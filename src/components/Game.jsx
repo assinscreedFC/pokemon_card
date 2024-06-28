@@ -5,7 +5,7 @@ import getRandomNumberInRange from "./hook/getRRandomNumbeInRange.js";
 import Card from "./Card.jsx";
 import useAudioPlayer from "./hook/useAudioPlayer.js";
 
-function Game({onDataSend ,nombre}) {
+function Game({onDataSend ,nombre, onPlay, onPause, onStop, onNext, onPrevious, onPlayByIndex, onSetNextTrack, isPlaying, currentTrack }) {
    const {play}=useAudioPlayer("./assets/victory.mp3")
    const { getStoredValue, setStoredValue, removeStoredValue } =useLocalStorage();
 
@@ -37,6 +37,8 @@ function Game({onDataSend ,nombre}) {
            setclick( copy);
         }
             if(copy.length === nombre ){
+              onPlayByIndex(2);
+              onSetNextTrack(0);
             setetat(false);
             setinfo(false);
            }
@@ -86,7 +88,10 @@ function Game({onDataSend ,nombre}) {
         onDataSend(true);
     }   
     const retry=()=>{
-        
+      console.log(currentTrack);
+        if(currentTrack!=="./assets/opening.mp3"){
+          onPlayByIndex(0);
+        }
        
         setpoke([]);
         setclick([]);
@@ -113,6 +118,10 @@ function Game({onDataSend ,nombre}) {
         sit();
        
     } 
+  
+     
+      
+  
 
    
 

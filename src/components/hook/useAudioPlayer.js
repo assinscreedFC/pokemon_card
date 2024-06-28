@@ -1,16 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 
-const useAudioPlayer = (src, autoReplay = false) => {
+const useAudioPlayer = (srcArray) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const audioRef = useRef(new Audio(src));
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState(null);
+  const audioRef = useRef(new Audio(srcArray[0]));
 
   useEffect(() => {
     const audio = audioRef.current;
 
     const handleEnded = () => {
-      if (autoReplay) {
-        audio.play();
+      if (nextIndex !== null) {
+        playByIndex(nextIndex);
       } else {
         setIsPlaying(false);
       }
@@ -21,17 +23,12 @@ const useAudioPlayer = (src, autoReplay = false) => {
     return () => {
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [autoReplay]);
+  }, [nextIndex]);
 
   const play = () => {
-    if (isPaused) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      setIsPaused(false);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
+    audioRef.current.play();
+    setIsPlaying(true);
+    setIsPaused(false);
   };
 
   const pause = () => {
@@ -43,11 +40,33 @@ const useAudioPlayer = (src, autoReplay = false) => {
   };
 
   const stop = () => {
-    if (isPlaying || isPaused) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      setIsPlaying(false);
-      setIsPaused(false);
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
+    setIsPaused(false);
+  };
+
+  const playNext = () => {
+    const nextIndex = (currentIndex + 1) % srcArray.length;
+    playByIndex(nextIndex);
+  };
+
+  const playPrevious = () => {
+    const prevIndex = (currentIndex - 1 + srcArray.length) % srcArray.length;
+    playByIndex(prevIndex);
+  };
+
+  const playByIndex = (index) => {
+    if (index >= 0 && index < srcArray.length) {
+      setCurrentIndex(index);
+      audioRef.current.src = srcArray[index];
+      play();
+    }
+  };
+
+  const setNextTrack = (index) => {
+    if (index >= 0 && index < srcArray.length) {
+      setNextIndex(index);
     }
   };
 
@@ -56,6 +75,11 @@ const useAudioPlayer = (src, autoReplay = false) => {
     play,
     pause,
     stop,
+    playNext,
+    playPrevious,
+    playByIndex,
+    setNextTrack,
+    currentIndex,
   };
 };
 
