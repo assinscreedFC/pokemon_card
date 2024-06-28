@@ -1,4 +1,9 @@
+import useLocalStorage from "./hook/LocalStorageHook.js";
+
 function NavBar({score ,nbr}) {
+    const { getStoredValue, setStoredValue, removeStoredValue } =useLocalStorage();
+    const scoreValue = getStoredValue("max");
+
     return(
         <>
             <nav className="w-full flex flex-col justify-center items-center p-4 gap-4">
@@ -10,7 +15,7 @@ function NavBar({score ,nbr}) {
                 </div>  
               </div>
               <div>
-                    <h2>SCORE: 0 HIGH SCORE: 7</h2>
+                    <h2>SCORE: {score} HIGH SCORE: {scoreValue}</h2>
                 </div>
                 <div className=" mt-4"><h2>{score}/{nbr}</h2></div>
             </nav>

@@ -1,13 +1,12 @@
 import NavBar from "./NavBar.jsx"
-import useSWR from 'swr'
+import useLocalStorage from "./hook/LocalStorageHook.js";
 import { useEffect, useState } from "react";
 import getRandomNumberInRange from "./hook/getRRandomNumbeInRange.js";
 import Card from "./Card.jsx";
-import { data } from "autoprefixer";
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 function Game({onDataSend ,nombre}) {
    
-
+   const { getStoredValue, setStoredValue, removeStoredValue } =useLocalStorage();
 
     const [cards, setCards] = useState([])
     // const [info,setinfo]=useState(); 
@@ -23,6 +22,10 @@ function Game({onDataSend ,nombre}) {
 
         if(copy.includes(dta)){
            setetat(false);
+           const val =getStoredValue("max");
+        if(val<click.length){
+             setStoredValue("max",click.length);
+        }
         }else{
             
            copy.push(dta);
@@ -72,16 +75,39 @@ function Game({onDataSend ,nombre}) {
     const aceuille=()=>{
         onDataSend(true);
     }   
-   
+    const retry=()=>{
+        
+       
+        setpoke([]);
+        setclick([]);
+        setCards([]);
+        
 
-
-
-// group-hover:h-40 group-hover:w-40
+        const sit=()=>{
+            let tabb=[];
+            let ceveau=[];
+            let rand; 
+            for(let i=0;i<nombre;i++){
+              do{ 
+                rand  = getRandomNumberInRange(1, 130);
+              } while(ceveau.includes(rand))
+                  ceveau.push(rand);
+             
+              tabb.push(<Card val={rand} onDataSend={handeldata} key={i}/>);
+              console.log("anisd");
+          }
+          setCards(tabb);
+          setpoke(ceveau);
+          setetat(true);
+        }
+        sit();
+       
+    } 
 
     return(
         <>
     <div className="flex flex-col  content-start">  <NavBar score={click.length} nbr={nombre}/></div>
-    <div className="  w-full flex flex-wrap justify-center items-center gap-10 px-4">
+    <div className="  w-full flex flex-wrap justify-center items-center gap-10 p-7">
     
     {etat ? cards : <div className=" w-full min-h-svh inset-0 absolute  bg-black/40 flex justify-center items-center">
              <div className="min-h-full  flex justify-center items-center  ">
@@ -91,34 +117,16 @@ function Game({onDataSend ,nombre}) {
                 <div className=" font-custom mx-4 text-lg flex flex-col gap-1">
                     <p className=" cursor-pointer"></p>
                     <p className=" cursor-pointer" onClick={aceuille}>Acueille</p>
-                    <p className=" cursor-pointer">Retry</p>
+                    <p className=" cursor-pointer" onClick={retry}>Retry</p>
                 </div>
-                
-
                 <h3 className=" font-custom mx-4 text-lg cursor-pointer"><a href="https://github.com/assinscreedFC" target="_blank" className="cursor-pointer">GITHUB REPO</a></h3>
 
             </div>
             
             </div>
         </div>}
-    
-    
-    
-   
-
-  
-  
-  
-  
- 
     </div>
-     
-          
-
         </>
     )
 }
-
-
-
 export default Game
