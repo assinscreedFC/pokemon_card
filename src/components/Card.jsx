@@ -1,10 +1,12 @@
 import useSWR from 'swr'
 import { useEffect } from 'react';
+import useAudioPlayer from './hook/useAudioPlayer.js';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Card({val,onDataSend } ) {
     const { data, error, isLoading } = useSWR(`https://pokeapi.co/api/v2/pokemon/${val}/` , fetcher);
+    const { play, pause, isPlaying } = useAudioPlayer(["./assets/pokemon-a-button.mp3"]);
     
     
       if (isLoading) {
@@ -22,6 +24,7 @@ function Card({val,onDataSend } ) {
     const Send=()=>{
         
         onDataSend(data.id);
+        play();
     }
     console.log(data);
     console.log(error);

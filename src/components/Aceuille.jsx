@@ -57,7 +57,15 @@ const handlegame=(valeur)=>{
                 </div>
                 
 
-                <h3 className=" izan mx-4 text-lg cursor-pointer">GITHUB REPO</h3>
+                <h3 className="izan mx-4 text-lg cursor-pointer">
+            <a
+              href="https://github.com/assinscreedFC"
+              target="_blank"
+              className="cursor-pointer"
+            >
+              GITHUB REPO
+            </a>
+          </h3>
 
             </div>
             
