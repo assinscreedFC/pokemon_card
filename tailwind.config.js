@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      translate: {
+        '1/2': '50%',
+      },
      backgroundImage: {
       "poke": "url(./assets/pokemon-bg.png)"
      },
@@ -32,6 +35,15 @@ export default {
     },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.translate-center': {
+          transform: 'translate(50%, 50%)',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
+  ],
 }
 

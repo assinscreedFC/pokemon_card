@@ -1,24 +1,61 @@
 import NavBar from "./NavBar.jsx"
 import useSWR from 'swr'
+import { useEffect, useState } from "react";
+import getRandomNumberInRange from "./hook/getRRandomNumbeInRange.js";
+import Card from "./Card.jsx";
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 function Game() {
-    const { data, error, isLoading } = useSWR(' https://pokeapi.co/api/v2/pokemon/35/', fetcher);
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
-    let inf=data.sprites.front_default;
-    console.log(inf);
+   
+
+  
+    const fonc=()=>{
+         
+        return data;   
+    }
+    // useEffect(() => {
+    //     const fetchRandomPokemon = async () => {
+    //       let tabb = [];
+    //       for (let index = 0; index < 5; index++) {
+    //         const rand = getRandomNumberInRange(1, 130);
+    //         const { data, error } = await useSWR(`https://pokeapi.co/api/v2/pokemon/40/`, fetcher);
+    //         if (error) {
+    //           console.error(`Failed to fetch Pokemon ${rand}:`, error);
+    //         } else {
+    //           tabb.push(data);
+    //         }console.log(data);
+    //       }
+          
+    //       settab(tabb);
+    //     };
+    
+    //     fetchRandomPokemon();
+    //   }, []);
+     
+      let tabb=[];
+      for(let i=0;i<5;i++){
+        const rand = getRandomNumberInRange(1, 130);
+        tabb.push(<Card val={rand}/>);
+    }
+
+   
+   
 
 
 
+// group-hover:h-40 group-hover:w-40
 
     return(
         <>
     <div className="flex flex-col  content-start">  <NavBar/></div>
-    <div className=" w-full flex flex-wrap justify-center items-center gap-10">
-    <div className="w-40 min-h-40  group overflow-hidden relative">
-        <img src="./card-back.png" alt="card" className="absolute inset-0 z-10  opacity-50 h-full w-full transition-all duration-300 ease-in-out group-hover:h-40 group-hover:w-40"/>
-    </div>
-        <p className=" absolute bottom-0 z-20 p-4">afewwwfefefefefefefefefeffefefefenis</p>
+    <div className="  w-full flex flex-wrap justify-center items-center gap-10 px-4">
+    
+    
+    {tabb}
+    
+    
+   
+
+  
   
   
   
